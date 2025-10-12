@@ -1,0 +1,13 @@
+{
+  "title": "Complaints Management",
+  "stats": [
+    {
+      "label": "Open Complaints",
+      "value": "8",
+      "change": "-12.5%",
+      "changeType": "negative",
+      "icon": "warning"
+    }
+  ],
+  "complaints": []
+}

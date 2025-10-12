@@ -1,0 +1,122 @@
+{
+  "overview": {
+    "title": "Dashboard Overview",
+    "subtitle": "Monitor your platform performance and key metrics",
+    "stats": [
+      {
+        "id": "active-users",
+        "label": "Active User",
+        "value": "2000",
+        "change": "+8.2% from last month",
+        "changeType": "positive",
+        "icon": "users"
+      },
+      {
+        "id": "total-jobs",
+        "label": "Total Jobs",
+        "value": "200",
+        "change": "+12% from last month",
+        "changeType": "positive",
+        "icon": "briefcase"
+      },
+      {
+        "id": "revenue",
+        "label": "Revenue",
+        "value": "$184,592",
+        "change": "+7% from last month",
+        "changeType": "positive",
+        "icon": "dollar"
+      },
+      {
+        "id": "complaints",
+        "label": "Complaints",
+        "value": "8",
+        "change": "-4% from last month",
+        "changeType": "negative",
+        "icon": "warning"
+      }
+    ],
+    "additionalStats": [
+      {
+        "id": "tickets",
+        "label": "Ticket",
+        "value": "10",
+        "change": "+8.2% from last month",
+        "changeType": "positive",
+        "icon": "ticket"
+      }
+    ]
+  },
+  "revenueChart": {
+    "title": "Last 7 days revenue",
+    "data": {
+      "labels": ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      "datasets": [
+        {
+          "label": "Revenue",
+          "data": [450, 500, 420, 600, 550, 480, 620],
+          "borderColor": "#10B981",
+          "backgroundColor": "rgba(16, 185, 129, 0.1)",
+          "fill": true,
+          "tension": 0.4
+        }
+      ]
+    }
+  },
+  "recentActivity": {
+    "title": "Recent User Activity",
+    "headers": [
+      "User",
+      "Role",
+      "Job title",
+      "Status",
+      "Last Active",
+      "Actions"
+    ],
+    "data": [
+      {
+        "id": 1,
+        "user": "Jacob Jones",
+        "role": "Customer",
+        "jobTitle": "Drone Service Not Arriving on Scheduled Time",
+        "status": "Completed",
+        "statusType": "success",
+        "lastActive": "2 minutes ago"
+      },
+      {
+        "id": 2,
+        "user": "Floyd Miles",
+        "role": "Operator",
+        "jobTitle": "Inaccurate Information in Soil Analysis Results",
+        "status": "In Progress",
+        "statusType": "warning",
+        "lastActive": "22 minutes ago"
+      },
+      {
+        "id": 3,
+        "user": "Dianne Russell",
+        "role": "Customer",
+        "jobTitle": "Questioning the Accuracy of Crop Monitoring Reports",
+        "status": "In Progress",
+        "statusType": "warning",
+        "lastActive": "1 hour ago"
+      },
+      {
+        "id": 4,
+        "user": "Theresa Webb",
+        "role": "Operator",
+        "jobTitle": "Drone Service Not Arriving on Scheduled Time",
+        "status": "Rejected",
+        "statusType": "error",
+        "lastActive": "28 minutes ago"
+      }
+    ],
+    "pagination": {
+      "current": 1,
+      "total": 106,
+      "showing": "Showing 4 of 106 Users",
+      "hasNext": true,
+      "hasPrevious": false
+    }
+  }
+}
