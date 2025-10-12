@@ -1,0 +1,24 @@
+{
+  "title": "Drone Operators",
+  "stats": [
+    {
+      "label": "Total Operators",
+      "value": "45",
+      "change": "+5.2%",
+      "changeType": "positive",
+      "icon": "users"
+    }
+  ],
+  "operators": [
+    {
+      "id": "op-001",
+      "name": "Rajat Kumar",
+      "email": "rajat.kumar@example.com",
+      "license": "A12345",
+      "status": "active",
+      "experience": "4 years",
+      "missions": 128,
+      "rating": "4.8"
+    }
+  ]
+}

@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api',
+  // Use site root as default base so absolute paths resolve reliably
+  baseURL: import.meta.env.VITE_API_BASE_URL || '/',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
@@ -15,6 +16,18 @@ axiosInstance.interceptors.request.use(
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
+    }
+
+    // If requesting static local files inside /admin/data, bypass any API base URL
+    // (some envs set VITE_API_BASE_URL to an external server like http://localhost:3000/api)
+    // and that causes requests like http://localhost:3000/api/admin/data/... which fail
+    // For static assets served by Vite (public/admin/data), force requests to the app root.
+    if (
+      config &&
+      typeof config.url === 'string' &&
+      config.url.startsWith('/admin/data')
+    ) {
+      config.baseURL = '';
     }
 
     if (import.meta.env.DEV) {
