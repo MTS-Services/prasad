@@ -1,9 +1,9 @@
 import React from 'react';
 import { useAuth } from '../hooks/useAuth';
-import AdminDashboard from '../components/dashboards/AdminDashboard';
-import MarketingDashboard from '../components/dashboards/MarketingDashboard';
-import EmployeeDashboard from '../components/dashboards/EmployeeDashboard';
-import FieldAgentDashboard from '../components/dashboards/FieldAgentDashboard';
+import AdminDashboard from '../components/admin/components/AdminDashboard';
+import MarketingDashboard from '../components/marketing/MarketingDashboard';
+import EmployeeDashboard from '../components/employee/EmployeeDashboard';
+import FieldAgentDashboard from '../components/fieldAgent/FieldAgentDashboard';
 import NotAuthorizedPage from './NotAuthorizedPage';
 
 const DashboardPage = () => {

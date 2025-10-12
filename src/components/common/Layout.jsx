@@ -1,18 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Outlet } from 'react-router-dom';
 import { Header } from './Header';
 import { Footer } from './Footer';
 
-export const Layout = ({ children }) => {
+export const Layout = () => {
   return (
     <div className='flex flex-col min-h-screen bg-gray-50 w-full'>
       <Header />
-      <main className='flex-grow w-full flex flex-col'>{children}</main>
+      <main className='flex-grow w-full flex flex-col'>
+        <Outlet />
+      </main>
       <Footer />
     </div>
   );
-};
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
 };
