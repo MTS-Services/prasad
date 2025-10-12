@@ -1,12 +1,3 @@
-/**
- * Utility functions for the application
- */
-
-/**
- * Formats error messages for user display
- * @param {Error} error - The error object
- * @returns {string} - Formatted error message
- */
 export const formatErrorMessage = (error) => {
   console.error('Authentication error:', error);
 
@@ -34,21 +25,11 @@ export const formatErrorMessage = (error) => {
   }
 };
 
-/**
- * Capitalizes the first letter of a string
- * @param {string} str - The string to capitalize
- * @returns {string} - Capitalized string
- */
 export const capitalize = (str) => {
   if (!str) return '';
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
-/**
- * Formats role names for display
- * @param {string} role - The role string
- * @returns {string} - Formatted role name
- */
 export const formatRole = (role) => {
   if (!role) return 'Unknown';
   return role.split('_').map(capitalize).join(' ');
