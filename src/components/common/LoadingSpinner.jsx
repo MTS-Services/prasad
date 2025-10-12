@@ -28,3 +28,5 @@ LoadingSpinner.propTypes = {
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   className: PropTypes.string,
 };
+
+export default LoadingSpinner;

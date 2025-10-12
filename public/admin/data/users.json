@@ -1,0 +1,22 @@
+{
+  "title": "User Management",
+  "stats": [
+    {
+      "label": "Total Users",
+      "value": "2,456",
+      "change": "+12.5%",
+      "changeType": "positive",
+      "icon": "users"
+    }
+  ],
+  "users": [
+    {
+      "id": "user-001",
+      "name": "Priya Sen",
+      "email": "priya.sen@example.com",
+      "role": "Admin",
+      "status": "active",
+      "joinedDate": "2024-07-15"
+    }
+  ]
+}

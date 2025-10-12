@@ -22,8 +22,18 @@
       "title": "Admin Dashboard",
       "welcome": "Welcome back, Administrator",
       "fullAccess": "Full Access",
-      "overview": "Overview",
-      "overviewDescription": "Welcome to your admin dashboard. Use the sidebar to navigate between different sections."
+      "overview": "Dashboard Overview",
+      "overviewDescription": "Monitor your platform performance and key metrics",
+      "stats": {
+        "active-users": "Active User",
+        "total-jobs": "Total Jobs",
+        "revenue": "Revenue",
+        "complaints": "Complaints",
+        "tickets": "Tickets",
+        "ticket": "Ticket"
+      },
+      "recentActivity": "Recent User Activity",
+      "revenueChart": "Last 7 days revenue"
     },
     "employee": {
       "title": "Employee Dashboard",
@@ -39,7 +49,7 @@
     }
   },
   "sidebar": {
-    "prasadDashboard": "Prasad Dashboard",
+    "prasadDashboard": "Demo Logo",
     "admin": {
       "droneOperator": "Drone operator",
       "userManagement": "User management",
@@ -79,7 +89,36 @@
     "totalUsers": "Total Users",
     "activeSessions": "Active Sessions",
     "totalRevenue": "Total Revenue",
-    "openComplaints": "Open Complaints"
+    "openComplaints": "Open Complaints",
+    "activeUser": "Active User",
+    "totalJobs": "Total Jobs",
+    "revenue": "Revenue",
+    "complaints": "Complaints",
+    "ticket": "Ticket",
+    "lastSevenDaysRevenue": "Last 7 days revenue",
+    "recentUserActivity": "Recent User Activity"
+  },
+  "pagination": {
+    "previous": "Previous",
+    "next": "Next",
+    "showing": "Showing",
+    "of": "of",
+    "users": "Users"
+  },
+  "table": {
+    "headers": {
+      "user": "User",
+      "role": "Role",
+      "jobTitle": "Job title",
+      "status": "Status",
+      "lastActive": "Last Active",
+      "actions": "Actions"
+    },
+    "status": {
+      "completed": "Completed",
+      "inProgress": "In Progress",
+      "notStarted": "Not started"
+    }
   },
   "home": {
     "title": "Welcome to Prasad Dashboard",
@@ -194,6 +233,10 @@
   },
   "common": {
     "logout": "Logout",
-    "pageNotFound": "Page not found"
+    "pageNotFound": "Page not found",
+    "error": "Error",
+    "retry": "Retry",
+    "noData": "No data available",
+    "manageAndMonitor": "Manage and monitor"
   }
 }

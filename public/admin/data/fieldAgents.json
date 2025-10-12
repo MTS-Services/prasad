@@ -1,0 +1,13 @@
+{
+  "title": "Field Agents",
+  "stats": [
+    {
+      "label": "Total Agents",
+      "value": "34",
+      "change": "+6.1%",
+      "changeType": "positive",
+      "icon": "users"
+    }
+  ],
+  "agents": []
+}

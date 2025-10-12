@@ -1,0 +1,13 @@
+{
+  "title": "Payments Management",
+  "stats": [
+    {
+      "label": "Total Revenue",
+      "value": "$184,592",
+      "change": "+18.2%",
+      "changeType": "positive",
+      "icon": "dollar"
+    }
+  ],
+  "payments": []
+}
