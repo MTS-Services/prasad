@@ -1,0 +1,23 @@
+{
+  "title": "Jobs Management",
+  "stats": [
+    {
+      "label": "Total Jobs",
+      "value": "1,234",
+      "change": "+15.3%",
+      "changeType": "positive",
+      "icon": "briefcase"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "job-001",
+      "title": "Site Survey - Sector 7G",
+      "description": "Preliminary site survey for infrastructure assessment.",
+      "client": "Acme Corp",
+      "status": "in-progress",
+      "priority": "high",
+      "createdDate": "2025-10-01"
+    }
+  ]
+}
