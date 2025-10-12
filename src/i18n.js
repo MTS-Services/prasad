@@ -49,13 +49,18 @@ i18n
     },
 
     // Development options
-    debug: import.meta.env.DEV,
+    debug: false, // Set to false to reduce console warnings
 
     // Namespace separator
     nsSeparator: ':',
 
     // Key separator
     keySeparator: '.',
+
+    // Additional options to reduce warnings
+    saveMissing: false,
+    missingKeyHandler: false,
+    parseMissingKeyHandler: false,
   });
 
 export default i18n;

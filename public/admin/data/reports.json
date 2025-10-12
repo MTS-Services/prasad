@@ -1,0 +1,13 @@
+{
+  "title": "Reports & Analytics",
+  "stats": [
+    {
+      "label": "Total Reports",
+      "value": "456",
+      "change": "+8.9%",
+      "changeType": "positive",
+      "icon": "briefcase"
+    }
+  ],
+  "reports": []
+}

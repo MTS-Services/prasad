@@ -1,0 +1,13 @@
+{
+  "title": "Employee Management",
+  "stats": [
+    {
+      "label": "Total Employees",
+      "value": "89",
+      "change": "+4.2%",
+      "changeType": "positive",
+      "icon": "users"
+    }
+  ],
+  "employees": []
+}
