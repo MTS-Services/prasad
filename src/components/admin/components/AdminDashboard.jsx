@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { LoadingSpinner } from '../../common/LoadingSpinner';
 
 // Import dashboard components
@@ -6,17 +6,32 @@ import RevenueChart from '../charts/RevenueChart';
 import UserActivityTable from '../../common/UserActivityTable';
 import StatsCard from '../../common/StatsCard';
 
-// Custom hook for dashboard data
-import { useDashboardData } from '../../../hooks/useDashboardData';
+// Import API service
+import ApiService from '../../../services/apiService';
 
 const AdminDashboard = () => {
-  const {
-    data: dashboardData,
-    loading: dashboardLoading,
-    error: dashboardError,
-  } = useDashboardData();
+  const [dashboardData, setDashboardData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (dashboardLoading) {
+  useEffect(() => {
+    const fetchDashboardData = async () => {
+      try {
+        setLoading(true);
+        const data = await ApiService.get('/admin/data/dashboardData.json');
+        setDashboardData(data);
+      } catch (err) {
+        console.error('Error fetching dashboard data:', err);
+        setError(err.message || 'Failed to load dashboard data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchDashboardData();
+  }, []);
+
+  if (loading) {
     return (
       <div className='flex items-center justify-center h-64'>
         <LoadingSpinner />
@@ -24,11 +39,13 @@ const AdminDashboard = () => {
     );
   }
 
-  if (dashboardError) {
+  if (error) {
     return (
       <div className='flex items-center justify-center h-64'>
         <div className='text-center'>
-          <p className='text-red-600 mb-4'>Error loading dashboard data</p>
+          <p className='text-red-600 mb-4'>
+            Error loading dashboard data: {error}
+          </p>
           <button
             className='px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700'
             onClick={() => window.location.reload()}

@@ -1,7 +1,72 @@
-import React from 'react';
-import { HiOutlineUsers } from 'react-icons/hi';
+import React, { useState, useEffect } from 'react';
+import { HiOutlineUsers, HiOutlineEye } from 'react-icons/hi';
+import ApiService from '../../../services/apiService';
 
 const UserManagement = () => {
+  const [userData, setUserData] = useState(null);
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        setLoading(true);
+        const data = await ApiService.get('/admin/data/users.json');
+        setUserData(data);
+        setUsers(data.users || []);
+      } catch (err) {
+        console.error('Error fetching users:', err);
+        setError(err.message || 'Failed to load user data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  // Pagination
+  const totalPages = Math.ceil(users.length / itemsPerPage);
+  const paginatedUsers = users.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  const handlePrevious = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
+
+  const handleNext = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  };
+
+  if (loading) {
+    return (
+      <div className='min-h-screen bg-gray-50 w-full flex items-center justify-center'>
+        <div className='text-gray-700'>Loading user data...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className='min-h-screen bg-gray-50 w-full flex items-center justify-center'>
+        <div className='text-center'>
+          <p className='text-red-600 mb-4'>Error: {error}</p>
+          <button
+            className='px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700'
+            onClick={() => window.location.reload()}
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className='min-h-screen bg-gray-50 w-full'>
       <div className='w-full px-4 sm:px-6 lg:px-8 py-6'>
@@ -14,7 +79,7 @@ const UserManagement = () => {
               </div>
               <div>
                 <h1 className='text-2xl sm:text-3xl font-bold text-gray-900'>
-                  User Management
+                  {userData?.title || 'User Management'}
                 </h1>
                 <p className='text-gray-600 mt-1'>
                   Manage user accounts and permissions
@@ -29,32 +94,138 @@ const UserManagement = () => {
           </div>
         </div>
 
-        {/* Content Area */}
-        <div className='bg-white rounded-xl shadow-sm p-6'>
-          <h2 className='text-xl font-bold text-gray-900 mb-4'>
-            User Management Dashboard
-          </h2>
-          <p className='text-gray-600 mb-6'>
-            This page will contain user management functionality.
-          </p>
+        {/* Stats Cards */}
+        {userData?.stats && (
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8'>
+            {userData.stats.map((stat, index) => (
+              <div key={index} className='bg-white p-6 rounded-xl shadow-sm'>
+                <h3 className='font-semibold text-gray-900 mb-2'>
+                  {stat.label}
+                </h3>
+                <p className='text-2xl font-bold text-blue-600'>{stat.value}</p>
+                {stat.change && (
+                  <p
+                    className={`text-sm mt-1 ${
+                      stat.changeType === 'positive'
+                        ? 'text-green-600'
+                        : 'text-red-600'
+                    }`}
+                  >
+                    {stat.change}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
 
-          {/* Demo Content */}
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
-            <div className='bg-gray-50 p-4 rounded-lg'>
-              <h3 className='font-semibold text-gray-900 mb-2'>Total Users</h3>
-              <p className='text-2xl font-bold text-blue-600'>1,234</p>
+        {/* Users Table */}
+        <div className='bg-white rounded-xl shadow-sm'>
+          <div className='p-6 border-b border-gray-200'>
+            <h2 className='text-xl font-bold text-gray-900'>All Users</h2>
+            <p className='text-gray-600 mt-1'>
+              Showing {paginatedUsers.length} of {users.length} users
+            </p>
+          </div>
+
+          <div className='overflow-x-auto'>
+            <table className='w-full'>
+              <thead className='bg-gray-50 border-b border-gray-200'>
+                <tr>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase'>
+                    Name
+                  </th>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase'>
+                    Email
+                  </th>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase'>
+                    Role
+                  </th>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase'>
+                    Status
+                  </th>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase'>
+                    Joined
+                  </th>
+                  <th className='px-6 py-3 text-left text-xs font-medium text-gray-700 uppercase'>
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody className='divide-y divide-gray-200'>
+                {paginatedUsers.map((user, index) => (
+                  <tr key={user.id || index} className='hover:bg-gray-50'>
+                    <td className='px-6 py-4'>
+                      <div className='flex items-center'>
+                        <div className='w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3'>
+                          <span className='text-blue-600 font-semibold text-sm'>
+                            {user.name
+                              ?.split(' ')
+                              .map((n) => n[0])
+                              .join('')
+                              .toUpperCase() || 'U'}
+                          </span>
+                        </div>
+                        <div>
+                          <div className='text-sm font-medium text-gray-900'>
+                            {user.name || 'N/A'}
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td className='px-6 py-4 text-sm text-gray-900'>
+                      {user.email || 'N/A'}
+                    </td>
+                    <td className='px-6 py-4 text-sm text-gray-900'>
+                      {user.role || 'User'}
+                    </td>
+                    <td className='px-6 py-4'>
+                      <span
+                        className={`inline-flex px-3 py-1 rounded-full text-xs font-medium ${
+                          user.status === 'active'
+                            ? 'bg-green-100 text-green-700'
+                            : 'bg-red-100 text-red-700'
+                        }`}
+                      >
+                        {user.status || 'active'}
+                      </span>
+                    </td>
+                    <td className='px-6 py-4 text-sm text-gray-900'>
+                      {user.joinedDate || 'N/A'}
+                    </td>
+                    <td className='px-6 py-4'>
+                      <button className='text-gray-600 hover:text-gray-900'>
+                        <HiOutlineEye className='w-5 h-5' />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Pagination */}
+          <div className='px-6 py-4 border-t border-gray-200 flex items-center justify-between'>
+            <div className='text-sm text-gray-600'>
+              Showing {(currentPage - 1) * itemsPerPage + 1} to{' '}
+              {Math.min(currentPage * itemsPerPage, users.length)} of{' '}
+              {users.length} results
             </div>
-            <div className='bg-gray-50 p-4 rounded-lg'>
-              <h3 className='font-semibold text-gray-900 mb-2'>Active Users</h3>
-              <p className='text-2xl font-bold text-green-600'>891</p>
-            </div>
-            <div className='bg-gray-50 p-4 rounded-lg'>
-              <h3 className='font-semibold text-gray-900 mb-2'>New Today</h3>
-              <p className='text-2xl font-bold text-purple-600'>12</p>
-            </div>
-            <div className='bg-gray-50 p-4 rounded-lg'>
-              <h3 className='font-semibold text-gray-900 mb-2'>Pending</h3>
-              <p className='text-2xl font-bold text-orange-600'>8</p>
+            <div className='flex gap-2'>
+              <button
+                onClick={handlePrevious}
+                disabled={currentPage === 1}
+                className='px-4 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50 disabled:opacity-50'
+              >
+                Previous
+              </button>
+              <button
+                onClick={handleNext}
+                disabled={currentPage === totalPages || totalPages === 0}
+                className='px-4 py-2 border border-gray-300 rounded-lg text-sm text-gray-700 hover:bg-gray-50 disabled:opacity-50'
+              >
+                Next
+              </button>
             </div>
           </div>
         </div>
