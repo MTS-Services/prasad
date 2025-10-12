@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { HiOutlineUsers, HiOutlineEye } from 'react-icons/hi';
-import ApiService from '../../../services/apiService';
+import axiosInstance from '../../../config/axiosConfig';
 
 const UserManagement = () => {
   const [userData, setUserData] = useState(null);
@@ -14,7 +14,8 @@ const UserManagement = () => {
     const fetchUserData = async () => {
       try {
         setLoading(true);
-        const data = await ApiService.get('/admin/data/users.json');
+        const response = await axiosInstance.get('/admin/data/users.json');
+        const data = response.data;
         setUserData(data);
         setUsers(data.users || []);
       } catch (err) {

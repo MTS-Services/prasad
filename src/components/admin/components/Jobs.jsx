@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { HiOutlineBriefcase, HiOutlineEye } from 'react-icons/hi';
-import ApiService from '../../../services/apiService';
+import axiosInstance from '../../../config/axiosConfig';
 
 const Jobs = () => {
   const [jobsData, setJobsData] = useState(null);
@@ -14,7 +14,8 @@ const Jobs = () => {
     const fetchJobsData = async () => {
       try {
         setLoading(true);
-        const data = await ApiService.get('/admin/data/jobs.json');
+        const response = await axiosInstance.get('/admin/data/jobs.json');
+        const data = response.data;
         setJobsData(data);
         setJobs(data.jobs || []);
       } catch (err) {

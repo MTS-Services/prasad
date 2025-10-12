@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { HiOutlineViewGrid, HiOutlineEye } from 'react-icons/hi';
-import ApiService from '../../../services/apiService';
+import axiosInstance from '../../../config/axiosConfig';
 
 const DroneOperator = () => {
   const [droneData, setDroneData] = useState(null);
@@ -14,7 +14,10 @@ const DroneOperator = () => {
     const fetchDroneData = async () => {
       try {
         setLoading(true);
-        const data = await ApiService.get('/admin/data/droneOperators.json');
+        const response = await axiosInstance.get(
+          '/admin/data/droneOperators.json'
+        );
+        const data = response.data;
         setDroneData(data);
         setOperators(data.operators || []);
       } catch (err) {

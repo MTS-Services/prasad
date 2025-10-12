@@ -6,8 +6,8 @@ import RevenueChart from '../charts/RevenueChart';
 import UserActivityTable from '../../common/UserActivityTable';
 import StatsCard from '../../common/StatsCard';
 
-// Import API service
-import ApiService from '../../../services/apiService';
+// Import axios instance
+import axiosInstance from '../../../config/axiosConfig';
 
 const AdminDashboard = () => {
   const [dashboardData, setDashboardData] = useState(null);
@@ -18,7 +18,10 @@ const AdminDashboard = () => {
     const fetchDashboardData = async () => {
       try {
         setLoading(true);
-        const data = await ApiService.get('/admin/data/dashboardData.json');
+        const response = await axiosInstance.get(
+          '/admin/data/dashboardData.json'
+        );
+        const data = response.data;
         setDashboardData(data);
       } catch (err) {
         console.error('Error fetching dashboard data:', err);
