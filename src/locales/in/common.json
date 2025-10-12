@@ -6,6 +6,41 @@
     "getStarted": "शुरू करें",
     "goToDashboard": "डैशबोर्ड पर जाएं"
   },
+  "stats": {
+    "totalUsers": "कुल उपयोगकर्ता",
+    "activeSessions": "सक्रिय सत्र",
+    "totalRevenue": "कुल आय",
+    "openComplaints": "खुली शिकायतें",
+    "activeUser": "सक्रिय उपयोगकर्ता",
+    "totalJobs": "कुल नौकरियां",
+    "revenue": "आय",
+    "complaints": "शिकायतें",
+    "ticket": "टिकट",
+    "lastSevenDaysRevenue": "पिछले 7 दिनों की आय",
+    "recentUserActivity": "हाल की उपयोगकर्ता गतिविधि"
+  },
+  "pagination": {
+    "previous": "पिछला",
+    "next": "अगला",
+    "showing": "दिखा रहे हैं",
+    "of": "में से",
+    "users": "उपयोगकर्ता"
+  },
+  "table": {
+    "headers": {
+      "user": "उपयोगकर्ता",
+      "role": "भूमिका",
+      "jobTitle": "काम का शीर्षक",
+      "status": "स्थिति",
+      "lastActive": "अंतिम सक्रिय",
+      "actions": "कार्रवाई"
+    },
+    "status": {
+      "completed": "पूरा हो गया",
+      "inProgress": "प्रगति में",
+      "notStarted": "शुरू नहीं हुआ"
+    }
+  },
   "auth": {
     "welcomeBack": "वापस स्वागत है",
     "signInToAccount": "अपने खाते में साइन इन करें",
@@ -22,8 +57,18 @@
       "title": "एडमिन डैशबोर्ड",
       "welcome": "वापसी पर स्वागत है, प्रशासक",
       "fullAccess": "पूर्ण पहुंच",
-      "overview": "अवलोकन",
-      "overviewDescription": "आपके एडमिन डैशबोर्ड में आपका स्वागत है। विभिन्न अनुभागों के बीच नेविगेट करने के लिए साइडबार का उपयोग करें।"
+      "overview": "डैशबोर्ड अवलोकन",
+      "overviewDescription": "अपने प्लेटफॉर्म प्रदर्शन और मुख्य मेट्रिक्स की निगरानी करें",
+      "stats": {
+        "active-users": "सक्रिय उपयोगकर्ता",
+        "total-jobs": "कुल नौकरियां",
+        "revenue": "आय",
+        "complaints": "शिकायतें",
+        "tickets": "टिकट",
+        "ticket": "टिकट"
+      },
+      "recentActivity": "हाल की उपयोगकर्ता गतिविधि",
+      "revenueChart": "पिछले 7 दिनों की आय"
     },
     "employee": {
       "title": "कर्मचारी डैशबोर्ड",
@@ -39,7 +84,7 @@
     }
   },
   "sidebar": {
-    "prasadDashboard": "प्रसाद डैशबोर्ड",
+    "prasadDashboard": "डेमो लोगो",
     "admin": {
       "droneOperator": "ड्रोन ऑपरेटर",
       "userManagement": "उपयोगकर्ता प्रबंधन",
@@ -75,12 +120,7 @@
       "contentManagement": "सामग्री प्रबंधन"
     }
   },
-  "stats": {
-    "totalUsers": "कुल उपयोगकर्ता",
-    "activeSessions": "सक्रिय सत्र",
-    "totalRevenue": "कुल राजस्व",
-    "openComplaints": "खुली शिकायतें"
-  },
+
   "home": {
     "title": "प्रसाद डैशबोर्ड में आपका स्वागत है",
     "subtitle": "आधुनिक डिज़ाइन और शक्तिशाली सुविधाओं के साथ आपके संगठन के प्रबंधन के लिए एक व्यापक भूमिका-आधारित डैशबोर्ड एप्लिकेशन।",
@@ -194,6 +234,10 @@
   },
   "common": {
     "logout": "लॉगआउट",
-    "pageNotFound": "पेज नहीं मिला"
+    "pageNotFound": "पेज नहीं मिला",
+    "error": "त्रुटि",
+    "retry": "पुनः प्रयास करें",
+    "noData": "कोई डेटा उपलब्ध नहीं",
+    "manageAndMonitor": "प्रबंधन और निगरानी"
   }
 }
